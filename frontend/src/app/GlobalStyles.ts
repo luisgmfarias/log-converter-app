@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-size: 16px;
+    padding: 24px;
   }
 
   a {
