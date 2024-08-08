@@ -7,9 +7,9 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:import/typescript",
     "plugin:import/errors",
     "plugin:import/warnings",
+    "plugin:import/typescript",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -67,6 +67,13 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+    "typescript": {}
     }
   }
 }
