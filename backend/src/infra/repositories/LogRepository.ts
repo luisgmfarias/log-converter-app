@@ -1,5 +1,5 @@
 import { Log } from "../../domain/entities/Log";
-import { db } from "./firebase";
+import { db } from "../config/firebase";
 
 export class LogRepository {
   async save(log: Log): Promise<void> {

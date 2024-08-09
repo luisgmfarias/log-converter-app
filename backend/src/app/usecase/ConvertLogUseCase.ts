@@ -1,7 +1,14 @@
 import { Log } from "../../domain/entities/Log";
+import { StatisticsRepository } from "../../infra/repositories/StatisticsRepository";
 
 export class ConvertLogUseCase {
-  execute(rawLogs: string[]): string {
+  private statisticsRepository: StatisticsRepository;
+
+  constructor(statisticsRepository: StatisticsRepository) {
+    this.statisticsRepository = statisticsRepository;
+  }
+
+  async execute(rawLogs: string[]): Promise<string> {
     const header = [
       "#Version: 1.0",
       `#Date: ${new Date().toLocaleString()}`,
@@ -12,6 +19,11 @@ export class ConvertLogUseCase {
       const entry = Log.fromRawLog(log);
       return `"MINHA CDN" ${entry.httpMethod} ${entry.statusCode} ${entry.uriPath} ${entry.timeTaken} ${entry.responseSize} ${entry.cacheStatus}`;
     });
+
+    await this.statisticsRepository.incrementLogCount();
+    await this.statisticsRepository.incrementConversionCount(
+      new Date().toISOString().split("T")[0]
+    );
 
     return [...header, ...entries].join("\n");
   }

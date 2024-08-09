@@ -21,7 +21,9 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@types/cors": "^2.8.17",
     "axios": "^1.7.3",
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "firebase-admin": "^12.3.0"
   }

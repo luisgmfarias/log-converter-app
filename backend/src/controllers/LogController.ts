@@ -12,18 +12,28 @@ export class LogController {
   public async convertLog(req: Request, res: Response): Promise<void> {
     const { sourceUrl } = req.body;
 
+    if (!sourceUrl) {
+      res.status(400).send("sourceUrl is required");
+      return;
+    }
+
     try {
       const response = await axios.get(sourceUrl);
       const rawLogText = response.data;
 
       const rawLogs = rawLogText.trim().split("\n");
 
-      const result = this.convertLogUseCase.execute(rawLogs);
+      const convertedLog = await this.convertLogUseCase.execute(rawLogs);
+
+      const result = {
+        inputLog: rawLogs,
+        outputLog: convertedLog,
+      };
 
       res.setHeader("Content-Type", "text/plain");
       res.send(result);
     } catch (error) {
-      console.error("Erro ao converter log:", error);
+      console.error(error);
       res.status(500).send("Erro ao processar a conversão do log.");
     }
   }
