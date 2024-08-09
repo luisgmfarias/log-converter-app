@@ -9,9 +9,16 @@ export const Container = styled.div`
 
 export const TextArea = styled.textarea`
   width: 100%;
-  height: 200px;
+  height: 300px;
   padding: 10px;
 `
+
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`
+
 export const OutputContainer = styled.div`
   display: flex;
   flex-direction: column;

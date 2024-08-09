@@ -3,10 +3,10 @@ import { styled } from 'styled-components'
 import colors from '../../constants/colors'
 
 export const Container = styled.div<{
-  minWidth: number
+  minWidth?: number
 }>`
-  width: fit-content;
-  min-width: ${({ minWidth }) => minWidth}px;
+  ${({ minWidth }) =>
+    minWidth ? `width: fit-content; min-width: ${minWidth}px` : 'width: 100%'};
   background-color: ${colors.lightGrey};
   border-radius: 10px;
   transition: ease 0.2s;

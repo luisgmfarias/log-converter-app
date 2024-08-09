@@ -5,7 +5,7 @@ import * as SC from './styles'
 interface ICard {
   title?: string
   description?: string
-  minWidth: number
+  minWidth?: number
   value?: number
   children?: React.ReactNode
 }
