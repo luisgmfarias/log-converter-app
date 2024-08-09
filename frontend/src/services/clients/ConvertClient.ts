@@ -1,7 +1,9 @@
 import { axiosInstance } from '../api'
 
-export async function getLogText() {
-  const { data } = await axiosInstance.get(`/convert_log`)
+export async function getLogText(logUrl: string) {
+  const { data } = await axiosInstance.post(`/convert_log`, {
+    sourceUrl: logUrl,
+  })
   return data
 }
 
