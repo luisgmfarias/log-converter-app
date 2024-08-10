@@ -23,7 +23,7 @@ export class Log {
       httpMethod,
       uriPath,
       Math.round(parseFloat(parts[4])),
-      parseInt(parts[0])
+      parseInt(parts[5])
     );
   }
 }
