@@ -19,14 +19,14 @@ export class LogController {
 
     try {
       const response = await axios.get(sourceUrl);
-      const rawLogText = response.data;
+      const inputLogText = response.data;
 
-      const rawLogs = rawLogText.trim().split("\n");
+      const inputLogs = inputLogText.trim().split("\n");
 
-      const convertedLog = await this.convertLogUseCase.execute(rawLogs);
+      const convertedLog = await this.convertLogUseCase.execute(inputLogs);
 
       const result = {
-        inputLog: rawLogs,
+        inputLog: inputLogs,
         outputLog: convertedLog,
       };
 
