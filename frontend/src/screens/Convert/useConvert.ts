@@ -7,7 +7,7 @@ import { getLogText } from '../../services/clients/ConvertClient'
 export const useConvert = () => {
   const [urlInput, setUrlInput] = useState<string>('')
   const [convertedLog, setConvertedLog] = useState<string>('')
-  const [inputLog, setInputLog] = useState<string>('')
+  const [inputLog, setInputLog] = useState<string[]>([])
 
   const convertMutation = useMutation(getLogText, {
     onSuccess: data => {
@@ -35,10 +35,12 @@ export const useConvert = () => {
     URL.revokeObjectURL(url)
   }
 
+  const formattedInputLog = inputLog.map(log => log.trim()).join('\n')
+
   return {
     urlInput,
     setUrlInput,
-    inputLog,
+    formattedInputLog,
     convertedLog,
     handleConvert,
     downloadFile,

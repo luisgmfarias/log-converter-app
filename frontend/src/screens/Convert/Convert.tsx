@@ -12,7 +12,7 @@ export const Convert = () => {
     setUrlInput,
     handleConvert,
     convertedLog,
-    inputLog,
+    formattedInputLog,
     downloadFile,
   } = useConvert()
 
@@ -33,7 +33,7 @@ export const Convert = () => {
               </div>
             </SC.InputWrapper>
           </Card>
-          <SC.TextArea value={inputLog} disabled />
+          <SC.TextArea value={formattedInputLog} disabled />
         </SC.InputContainer>
         <SC.OutputContainer>
           <div>
