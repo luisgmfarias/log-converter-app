@@ -16,8 +16,8 @@ export class ConvertLogUseCase {
     ];
 
     const entries = inputLogs.map((log) => {
-      const entry = Log.fromRawLog(log);
-      return `"MINHA CDN" ${entry.httpMethod} ${entry.statusCode} ${entry.uriPath} ${entry.timeTaken} ${entry.responseSize} ${entry.cacheStatus}`;
+      const entry = Log.fromInputLog(log);
+      return `"MINHA CDN" ${entry.httpMethod} ${entry.statusCode} ${entry.uriPath} ${entry.timeTaken}  ${entry.responseSize} ${entry.cacheStatus}`;
     });
 
     await this.statisticsRepository.incrementLogCount();

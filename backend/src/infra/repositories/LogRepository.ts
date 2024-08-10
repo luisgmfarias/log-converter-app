@@ -4,7 +4,6 @@ import { db } from "../config/firebase";
 export class LogRepository {
   async save(log: Log): Promise<void> {
     await db.collection("logs").add({
-      id: log.id,
       statusCode: log.statusCode,
       cacheStatus: log.cacheStatus,
       httpMethod: log.httpMethod,

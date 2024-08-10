@@ -1,4 +1,6 @@
 import admin from "firebase-admin";
+
+//Inserir proprio arquivo de sdk
 import serviceAccount from "../../../logconverter-firebase-adminsdk.json";
 
 admin.initializeApp({

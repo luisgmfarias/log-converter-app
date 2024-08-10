@@ -1,29 +1,32 @@
 export class Log {
   constructor(
-    public id: number,
-    public statusCode: number,
-    public cacheStatus: string,
     public httpMethod: string,
+    public statusCode: number,
     public uriPath: string,
     public timeTaken: number,
-    public responseSize: number
+    public responseSize: number,
+    public cacheStatus: string
   ) {}
 
-  static fromRawLog(rawLog: string): Log {
-    const parts = rawLog.split("|");
+  static fromInputLog(inputLog: string): Log {
+    const parts = inputLog.split("|");
 
     const methodAndUri = parts[3]?.match(/"(.*?) (.*?) HTTP\/1.1"/);
     const httpMethod = methodAndUri ? methodAndUri[1] : "";
     const uriPath = methodAndUri ? methodAndUri[2] : "";
 
+    const responseSize = parseInt(parts[0]);
+    const statusCode = parseInt(parts[1]);
+    const cacheStatus = parts[2];
+    const timetaken = Math.round(parseFloat(parts[4]));
+
     return new Log(
-      parseInt(parts[0]),
-      parseInt(parts[1]),
-      parts[2],
       httpMethod,
+      statusCode,
       uriPath,
-      Math.round(parseFloat(parts[4])),
-      parseInt(parts[5])
+      timetaken,
+      responseSize,
+      cacheStatus
     );
   }
 }
