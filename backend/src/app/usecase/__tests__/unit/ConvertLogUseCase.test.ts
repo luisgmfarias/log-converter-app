@@ -8,6 +8,8 @@ describe("ConvertLogUseCase", () => {
   let mockStatisticsRepository: jest.Mocked<StatisticsRepository>;
 
   beforeEach(() => {
+    mockStatisticsRepository =
+      new StatisticsRepository() as jest.Mocked<StatisticsRepository>;
     convertLogUseCase = new ConvertLogUseCase(mockStatisticsRepository);
   });
 

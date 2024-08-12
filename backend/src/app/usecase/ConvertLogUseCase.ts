@@ -17,8 +17,10 @@ export class ConvertLogUseCase {
 
     const entries = inputLogs.map((log) => {
       const entry = Log.fromInputLog(log);
-      return `"MINHA CDN" ${entry.httpMethod} ${entry.statusCode} ${entry.uriPath} ${entry.timeTaken}  ${entry.responseSize} ${entry.cacheStatus}`;
+      return `"MINHA CDN" ${entry.httpMethod} ${entry.statusCode} ${entry.uriPath} ${entry.timeTaken} ${entry.responseSize} ${entry.cacheStatus}`;
     });
+
+    console.log(this.statisticsRepository);
 
     await this.statisticsRepository.incrementLogCount();
     await this.statisticsRepository.incrementConversionCount(
